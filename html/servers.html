@@ -1,0 +1,161 @@
+<html><head>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="test.css" rel="stylesheet" type="text/css">
+    </head><body>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">
+                            <b>[Welcome！]</b>
+                            <span class="label label-danger">Lars's Kreedz Home</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="lead nav nav-justified nav-pills">
+                            <li>
+                                <a href="admins.html"><i class="fa fa-users text-danger"></i>&nbsp;Admins</a>
+                            </li>
+                            <li>
+                                <a href="motd.html"><i class="fa fa-comment text-warning"></i>&nbsp;News</a>
+                            </li>
+                            <li style="background-color: #8cc780">
+                                <a href="servers.html"><i class="fa fa-server text-success"></i>&nbsp;Servers</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center" contenteditable="true">Server List</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="media-list text-justify">
+                            <li class="media">
+                                <a class="pull-left" href="#"><img class="media-object" src="http://i.imgur.com/8qVzOpr.png" height="64" width="64"></a>
+                                <div class="media-body">
+                                    <h3 class="media-heading">TODO</h3>
+                                    <h5 class="media-bottom text-danger">如果需要在该页面上增加你的服务器信息，请联系Lars</h5>
+                                    <h5 class="media-bottom ">CS 中无法直接复制ip，待修复.... </h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+
+                <table class="table">
+
+                    <tr class="text-warning">
+                        <td>Server Name</td>
+                        <td>Address</td>
+                        <td>Info</td>
+                    </tr>
+                    <tr>
+                        <td>Lars's kreedz Home</td>
+                        <td><a class="media-heading text-success copy-click"  title="点击复制">kreedz.larscheng.com:27015</a></td>
+                        <td>kz娱乐服</td>
+                    </tr>
+                    <tr>
+                        <td>几度夕阳红</td>
+                        <td><a class="media-heading text-success copy-click"  title="点击复制" >111.231.80.188:27015</a></td>
+                        <td>kz娱乐服</td>
+                    </tr>
+                    <tr>
+                        <td>Your Server Name</td>
+                        <td><a class="media-heading text-success copy-click"  title="点击复制" >Your Server Ip</a></td>
+                        <td>Your Server Info</td>
+                    </tr>
+                    <tr>
+                        <td>Your Server Name</td>
+                        <td><a class="media-heading text-success copy-click"  title="点击复制" >Your Server Ip</a></td>
+                        <td>Your Server Info</td>
+                    </tr>
+                    <tr>
+                        <td>Your Server Name</td>
+                        <td><a class="media-heading text-success copy-click"  title="点击复制" >Your Server Ip</a></td>
+                        <td>Your Server Info</td>
+                    </tr>
+                    <tr>
+                        <td>Your Server Name</td>
+                        <td><a class="media-heading text-success copy-click"  title="点击复制" >Your Server Ip</a></td>
+                        <td>Your Server Info</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <script>
+            const links = document.querySelectorAll('.copy-click');
+            const cls = {
+                copied: 'is-copied',
+                hover: 'is-hovered' };
+
+
+            const copyToClipboard = str => {
+                const el = document.createElement('input');
+                str.dataset.copyString ? el.value = str.dataset.copyString : el.value = str.text;
+                el.setAttribute('readonly', '');
+                el.style.position = 'absolute';
+                el.style.opacity = 0;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+            };
+
+            const clickInteraction = e => {
+                e.preventDefault();
+                copyToClipboard(e.target);
+                e.target.classList.add(cls.copied);
+                setTimeout(() => e.target.classList.remove(cls.copied), 1000);
+                setTimeout(() => e.target.classList.remove(cls.hover), 700);
+            };
+
+            Array.from(links).forEach(link => {
+                link.addEventListener('click', e => clickInteraction(e));
+                link.addEventListener('keypress', e => {
+                    if (e.keyCode === 13) clickInteraction(e);
+                });
+                link.addEventListener('mouseover', e => e.target.classList.add(cls.hover));
+                link.addEventListener('mouseleave', e => {
+                    if (!e.target.classList.contains(cls.copied)) {
+                        e.target.classList.remove(cls.hover);
+                    }
+                });
+            });
+
+        </script>
+</body></html>
